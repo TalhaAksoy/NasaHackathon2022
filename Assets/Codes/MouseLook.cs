@@ -11,6 +11,8 @@ public class MouseLook : MonoBehaviour
 
 	float xRotation = 0f;
 
+    [SerializeField]
+    GameObject pet;
 
     // Start is called before the first frame update
     void Start()

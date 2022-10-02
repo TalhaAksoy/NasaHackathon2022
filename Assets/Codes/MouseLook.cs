@@ -11,13 +11,15 @@ public class MouseLook : MonoBehaviour
 
 	float xRotation = 0f;
 
-    [SerializeField]
-    GameObject pet;
+    SkyboxRotate skybox;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        skybox = GetComponent<SkyboxRotate>();
     }
 
     // Update is called once per frame
@@ -30,5 +32,15 @@ public class MouseLook : MonoBehaviour
     	xRotation = Mathf.Clamp(xRotation, -90f, 90f);
     	transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+        if (skybox.move == true)
+        {
+            if (mouseX == 0 && mouseY == 0)
+                skybox.move = false;
+        }
+        else if (mouseX != 0 || mouseY != 0)
+            skybox.move = true;
+
     }
+
+ 
 }
